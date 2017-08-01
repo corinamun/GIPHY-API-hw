@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Travel Destinations</title>
+  <style type="text/css">
+    button,
+    div,
+    form,
+    input {
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="destination-buttons">
+  </div>
+
+    <form id="destination-form">
+      <label for="destination-input">Add a city or country</label>
+      <input type="text" type="submit" value="Submit">
+    </form>
+
+    <div id="destinations-view"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+      // Preset array of topics (destinations)
+      var topics = ["Paris", "London", "Rome", "Amsterdam", "Barcelona"];
+
+      // Displaying destination data
+      function displayDestination() {
+
+        var destination = $(this).attr
+
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + destination + "&api_key=520919e914d74d0b98e348dd25635af8";
+
+      //AJAX call for new destination being added
+
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).done(function(response)) 
+
+        // Delete the content inside the destinations-view div prior to adding new GIFs
+        $("#destinations-view").empty();
+
+        // Loop through the array of destinations and generate buttons
+
+        for (i = 0; i < topics.length; i++) {
+          var btn = $("<button>");
+          btn.text(topics[i]);
+          $("#destination-form").append(btn);
+        }
+      }
+
+      var a = $("<button>");
+      a.addClass("destination");
+      a.attr("data-name", topics[i]);
+      a.text(topics[i]);
+
+      $("#destination-form").append(a);
+
+      // When destination button is clicked...
+      $("#add-destination").on("click", function(event) {
+        $("#destination-form").push(movies);
+
+        // Stops submit button from trying to send a form.
+        event.preventDefault();
+
+    </script>
+  </div>
+</body>
+
+</html>
